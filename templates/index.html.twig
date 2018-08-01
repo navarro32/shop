@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block body %}
+<style>
+	.dataTables_length select{ 
+		display: block
+	}
+</style>
+  <h1 class="center-align" style="font-size:30px">Lista de Productos</h1>
+    {% if products %}
+    <table id="products" class="table table-striped">
+      <thead>
+        <tr>
+			<th>Id</th>
+          <th>Nombre de Producto</th>
+          
+		<th>Editar</th>
+			<th>Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+          <tr>
+			  <td>{{product.id}}</td>
+            <td><a href="/product/{{ product.id }}">{{ product.nombre }}</a></td>
+            
+			  <td>
+              <a href="/product/edit/{{ product.id }}" class="btn btn-light">Editar</a>
+				  </td>
+              <td><a href="#" class="btn red" data-id="{{ product.id }}">Borrar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+<script>
+$(document).ready(function() {
+    $('#products').DataTable( {
+        columnDefs: [
+            {
+                targets: [ 0, 1, 2 ],
+                className: 'mdl-data-table__cell--non-numeric'
+			}
+        ]
+    } );
+} );
+
+</script>
+
+  {% else %}
+    <p>No products to display</p>
+  {% endif %}
+  
+{% endblock %}

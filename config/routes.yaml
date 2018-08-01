@@ -1,0 +1,19 @@
+Index:
+    path:     /
+    controller: App\Controller\ProductController::Index
+
+list:
+    path:     /Productos
+    controller: App\Controller\ProductController::show
+producto_index:
+    path:     /Productos/{currentPage}
+    controller: App\Controller\ProductController::show
+    methods:	GET
+producto_single:
+    path:     /product/{id}
+    controller: App\Controller\ProductController::single
+    methods:	GET
+producto_single:
+    path:     /new
+    controller: App\Controller\ProductController::new_product
+    methods:	GET
