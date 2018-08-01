@@ -13,7 +13,11 @@ producto_single:
     path:     /product/{id}
     controller: App\Controller\ProductController::single
     methods:	GET
-producto_single:
+producto_nuevo:
     path:     /new
     controller: App\Controller\ProductController::new_product
     methods:	GET
+producto_add:
+    path:     /new
+    controller: App\Controller\ProductController::new_product
+    methods:	POST
